@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-3xl font-bold mb-6">Admin Panel</h1>
+
+  <div class="mb-6">
+    <input id="food-name" type="text" placeholder="Food Name" class="border p-2 rounded mb-2 w-full">
+    <input id="food-price" type="number" placeholder="Food Price" class="border p-2 rounded mb-2 w-full">
+    <button onclick="addFood()" class="bg-green-500 text-white px-4 py-2 rounded w-full">Add Food</button>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4">Food Menu</h2>
+  <div id="food-list" class="grid grid-cols-1 gap-4"></div>
+
+  <script>
+    async function addFood() {
+      const name = document.getElementById('food-name').value;
+      const price = document.getElementById('food-price').value;
+      await fetch('/api/admin/food', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, price })
+      });
+      alert('Food Added!');
+      loadFoods();
+    }
+
+    async function loadFoods() {
+      const res = await fetch('/api/foods');
+      const foods = await res.json();
+      const list = document.getElementById('food-list');
+      list.innerHTML = '';
+      foods.forEach(food => {
+        const div = document.createElement('div');
+        div.className = "bg-white p-4 rounded shadow flex justify-between items-center";
+        div.innerHTML = `
+          <div>
+            <h3 class="text-xl font-bold">${food.name}</h3>
+            <p>$${food.price}</p>
+          </div>
+          <button onclick="deleteFood('${food._id}')" class="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    async function deleteFood(id) {
+      await fetch(`/api/admin/food/${id}`, { method: 'DELETE' });
+      alert('Food Deleted!');
+      loadFoods();
+    }
+
+    loadFoods();
+  </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Canteen Mate - Staff Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      width: 90px;
+      height: 90px;
+    }
+
+    #head {
+      flex-grow: 1;
+      text-align: center;
+      margin: 0;
+    }
+
+    nav {
+      text-align: right;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    input {
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    td {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="canteenlogo.jpeg" alt="Logo" />
+    </div>
+    <h1 id="head">Canteen Mate</h1>
+    <nav>
+      <a href="#profile">Profile</a>
+      <a href="#orders">Orders</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section" id="staff-login">
+      <form id="staffLoginForm">
+        <table>
+          <tr>
+            <td>NAME:</td>
+            <td><input type="text" id="name" placeholder="Enter your name" required /></td>
+          </tr>
+          <tr>
+            <td>STAFF ID:</td>
+            <td><input type="text" id="staffId" placeholder="Enter staff ID" required /></td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td><input type="email" id="email" placeholder="Enter your email" required /></td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td><input type="password" id="password" placeholder="Enter password" required /></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align:center;">
+              <button type="submit">Login</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("staffLoginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const staffId = document.getElementById("staffId").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!name || !staffId || !email || !password) {
+        alert("Please fill in all fields before logging in.");
+      } else {
+        // Redirect to menu page
+        window.location.href = "menu.html"; // Make sure menu.html exists in the same folder
+      }
+    });
+  </script>
+</body>
+</html>
+
+

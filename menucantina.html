@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snacks & Pasta Menu</title>
+  <link rel="stylesheet" href="menucard.css" />
+  <style>
+     body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 20px;
+    }
+
+    #searchInput {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .controls button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .controls button:hover {
+      background-color: #0056b3;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .menu-item {
+      width: calc(100% - 5px);
+      display: flex;
+      margin: 10px;
+      border: 1px solid #eee;
+      padding: 10px;
+      border-radius: 10px;
+      background: #fff;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .menu-item:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .menu-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 15px;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .info h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .info p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .add-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .add-btn:hover {
+      background-color: #218838;
+    }
+    @media (max-width: 600px) {
+      .menu-item {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔍 Search & Sort Controls -->
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search dishes..." />
+    <button onclick="sortByPrice()">Sort by Price</button>
+    <button onclick="goToCart()">🛒 View Cart</button>
+  </div>
+
+  <main class="menu">
+    <!-- Your menu items start here -->
+    <div class="menu-item"><img src="veg pas.jpeg" alt="Veg pasta"><div class="info"><h3>Veg pasta</h3><p>₹35</p><p class="desc">A popular Hyderabadi dish prepared...</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="egg pasta.jpeg" alt="Egg pasta"><div class="info"><h3>Egg pasta</h3><p>₹40</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="gobi pasta.jpeg" alt="Gobi pasta"><div class="info"><h3>Gobi pasta</h3><p>₹40</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="egg gobi pasta.jpeg" alt="Egg gobi pasta"><div class="info"><h3>Egg gobi pasta</h3><p>₹60</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="veg noodles.jpeg" alt="Veg noodles"><div class="info"><h3>Veg noodles</h3><p>₹35</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="egg noodles.jpeg" alt="Egg noodles"><div class="info"><h3>Egg noodles</h3><p>₹50</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="gobi noodles.jpg" alt="Gobi noodles"><div class="info"><h3>Gobi noodles</h3><p>₹50</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="egg gobi noodles.jpeg" alt="Egg gobi noodles"><div class="info"><h3>Egg gobi noodles</h3><p>₹70</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="pizza.jpeg" alt="Veg pizza"><div class="info"><h3>Veg pizza</h3><p>₹50</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="cheese piz.jpeg" alt="Cheese pizza"><div class="info"><h3>Cheese pizza</h3><p>₹70</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="french fries.jpg" alt="French fries"><div class="info"><h3>French fries</h3><p>₹50</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="peri.jpeg" alt="Peri peri fries"><div class="info"><h3>Peri peri fries</h3><p>₹60</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="wewdgets.jpg" alt="Potato wedges"><div class="info"><h3>Potato wedges</h3><p>₹60</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="nuggets.jpeg" alt="Nuggets"><div class="info"><h3>Nuggets</h3><p>₹50</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="momos.jpeg" alt="Veg momos"><div class="info"><h3>Veg momos</h3><p>₹60</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="paneer mo.jpg" alt="Paneer momos"><div class="info"><h3>Paneer momos</h3><p>₹70</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="veg sand.JPG" alt="Veg sandwich"><div class="info"><h3>Veg sandwich</h3><p>₹25</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="cheese sand.jpg" alt="Cheese sandwich"><div class="info"><h3>Cheese sandwich</h3><p>₹40</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="choco sand.jpeg" alt="Choco cheese sandwich"><div class="info"><h3>Choco cheese sandwich</h3><p>₹50</p><button class="add-btn">ADD +</button></div></div>
+  </main>
+
+  <!-- 🔧 JavaScript -->
+  <script>
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const filter = this.value.toLowerCase();
+      const items = document.querySelectorAll(".menu-item");
+
+      items.forEach((item) => {
+        const text = item.querySelector("h3").textContent.toLowerCase();
+        item.style.display = text.includes(filter) ? "flex" : "none";
+      });
+    });
+
+    function sortByPrice() {
+      const menu = document.querySelector(".menu");
+      const items = Array.from(document.querySelectorAll(".menu-item"));
+
+      items.sort((a, b) => {
+        const priceA = parseFloat(a.querySelector("p").textContent.replace("₹", ""));
+        const priceB = parseFloat(b.querySelector("p").textContent.replace("₹", ""));
+        return priceA - priceB;
+      });
+
+      menu.innerHTML = "";
+      items.forEach(item => menu.appendChild(item));
+    }
+    document.querySelectorAll(".add-btn").forEach((button, index) => {
+      button.addEventListener("click", function () {
+        const menuItem = this.closest(".menu-item");
+        const name = menuItem.querySelector("h3").textContent;
+        const price = parseFloat(menuItem.querySelector("p").textContent.replace("₹", ""));
+        const img = menuItem.querySelector("img").src;
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existingItem = cart.find(item => item.name === name);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ name, price, img, quantity: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`✅ ${name} added to cart!`);
+      });
+    });
+
+    function goToCart() {
+      window.location.href = "cart.html"; // redirect to your cart page
+    }
+  </script>
+
+</body>
+</html>

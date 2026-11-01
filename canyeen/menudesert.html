@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drinks Menu</title>
+  <link rel="stylesheet" href="menucard.css" />
+  <style>
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 20px;
+    }
+
+    #searchInput {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .controls button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .controls button:hover {
+      background-color: #0056b3;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .menu-item {
+      width: calc(100% - 5px);
+      display: flex;
+      margin: 10px;
+      border: 1px solid #eee;
+      padding: 10px;
+      border-radius: 10px;
+      background: #fff;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .menu-item:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .menu-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 15px;
+    }
+
+    .info {
+      flex: 1;
+    }
+    .info h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .info p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .add-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .add-btn:hover {
+      background-color: #218838;
+    }
+    @media (max-width: 600px) {
+      .menu-item {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔍 Search & Sort Controls -->
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search drinks..." />
+    <button onclick="sortByPrice()">Sort by Price</button>
+    <button onclick="goToCart()">🛒 View Cart</button>
+  </div>
+
+  <!-- 🍹 Drinks Menu -->
+  <main class="menu">
+
+    <!-- New Menu Items -->
+    <div class="menu-item"><img src="maa.jpeg" alt="Maa Juice"><div class="info"><h3>Maa Juice</h3><p>₹10</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="bovo.jpg" alt="Bovonto Juice"><div class="info"><h3>Bovonto Juice</h3><p>₹30</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="coldcoffee.jpeg" alt="Cold Coffee"><div class="info"><h3>Cold Coffee</h3><p>₹60</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="chocolatemilk.jpeg" alt="Chocolate Milk"><div class="info"><h3>Chocolate Milk</h3><p>₹60</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="basilelemon.jpeg" alt="Basil Lemonade"><div class="info"><h3>Basil Lemonade</h3><p>₹40</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="yogurt.jpeg" alt="Frelish Yogurt"><div class="info"><h3>Frelish Yogurt</h3><p>₹50</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="hatsun.jpeg" alt="Hatsun Yogurt"><div class="info"><h3>Hatsun Yogurt</h3><p>₹25</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="sprite.jpeg" alt="Sprite"><div class="info"><h3>Sprite</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="coke.jpeg" alt="Coke"><div class="info"><h3>Coke</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="thumsup.jpeg" alt="Thumbs Up"><div class="info"><h3>Thumbs Up</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="pulpy.jpeg" alt="Pulpy Orange"><div class="info"><h3>Pulpy Orange</h3><p>₹40</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="tin1.jpeg" alt="Tin"><div class="info"><h3>Tin</h3><p>₹40</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="oatscook.jpg" alt="Oats Cookies"><div class="info"><h3>Oats Cookies</h3><p>₹25</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="ragi.jpeg" alt="Ragi Cookies"><div class="info"><h3>Ragi Cookies</h3><p>₹25</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="chocolatecookie.jpeg" alt="Chocolate Cookies"><div class="info"><h3>Chocolate Cookies</h3><p>₹25</p><button class="add-btn">ADD +</button></div></div>
+    <div class="menu-item"><img src="cavins.jpeg" alt="Cavins Milkshake"><div class="info"><h3>Cavins Milkshake</h3><p>₹40</p><button class="add-btn">ADD +</button></div></div>
+
+    <!-- 🧁 Bakery & Cakes Menu Items (NEW) -->
+<div class="menu-item"><img src="puddi.jpeg" alt="Pudding Cake"><div class="info"><h3>Pudding Cake</h3><p>₹25</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="brownie.jpeg" alt="Brownie Cake"><div class="info"><h3>Brownie Cake</h3><p>₹35</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="chocmuf.jpeg" alt="Chocolate Muffin"><div class="info"><h3>Chocolate Muffin</h3><p>₹30</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="venmuff.jpeg" alt="Vanilla Muffin"><div class="info"><h3>Vanilla Muffin</h3><p>₹25</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="icecake.jpeg" alt="Ice Cake"><div class="info"><h3>Ice Cake</h3><p>₹40</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="Chocolate-Truffle-Pastries_grande.jpg" alt="Choco Truffle"><div class="info"><h3>Choco Truffle</h3><p>₹45</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="banana-curd-cake2.webp" alt="Banana Cake"><div class="info"><h3>Banana Cake</h3><p>₹25</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="chococake.jpeg" alt="Chocolate Cake"><div class="info"><h3>Chocolate Cake</h3><p>₹25</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="Vanilla-Cake-12.jpg" alt="Vanilla Cake"><div class="info"><h3>Vanilla Cake</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="bun.jpeg" alt="Bun Butter Jam"><div class="info"><h3>Bun Butter Jam</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="vegpuff.jpg" alt="Veg Puff"><div class="info"><h3>Veg Puff</h3><p>₹15</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="egg puff.jpg" alt="Egg Puff"><div class="info"><h3>Egg Puff</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="veg roll.jpeg" alt="Veg Roll"><div class="info"><h3>Veg Roll</h3><p>₹15</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="egg roll.jpeg" alt="Egg Roll"><div class="info"><h3>Egg Roll</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="breadpac.jpeg" alt="Bread Packet"><div class="info"><h3>Bread Packet</h3><p>₹45</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="cake.jpeg" alt="Half kg Birthday Cake"><div class="info"><h3>Half kg Birthday Cake</h3><p>₹350</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="cake1kg.jpeg" alt="1kg Birthday Cake"><div class="info"><h3>1kg Birthday Cake</h3><p>₹700</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="chocolatecake.jpeg" alt="Chocolate Half kg Cake"><div class="info"><h3>Chocolate Half kg Cake</h3><p>₹400</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="chocolate1kg.jpg" alt="Chocolate 1kg Cake"><div class="info"><h3>Chocolate 1kg Cake</h3><p>₹800</p><button class="add-btn">ADD +</button></div></div>
+
+<!-- 🍫 Chocolates Menu Items (NEW) -->
+<div class="menu-item"><img src="munc.jpeg" alt="Munch ₹5"><div class="info"><h3>Munch</h3><p>₹5</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="munc.jpeg" alt="Munch ₹10"><div class="info"><h3>Munch</h3><p>₹10</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="munc.jpeg" alt="Munch ₹20"><div class="info"><h3>Munch</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="nestle classic.jpeg" alt="Nestle Classic ₹10"><div class="info"><h3>Nestle Classic</h3><p>₹10</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="milkybar.jpeg" alt="Milky Bar ₹10"><div class="info"><h3>Milky Bar</h3><p>₹10</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="milkybar.jpeg" alt="Milky Bar ₹20"><div class="info"><h3>Milky Bar</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="kitkat.jpeg" alt="KitKat ₹10"><div class="info"><h3>KitKat</h3><p>₹10</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="kitkat.jpeg" alt="KitKat ₹20"><div class="info"><h3>KitKat</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="kitkat.jpeg" alt="KitKat ₹35"><div class="info"><h3>KitKat</h3><p>₹35</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="kitkat.jpeg" alt="KitKat ₹55"><div class="info"><h3>KitKat</h3><p>₹55</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="nestle20.jpg" alt="Nestle Classic ₹20"><div class="info"><h3>Nestle Classic</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="kurkure.jpeg" alt="Kurkure ₹10"><div class="info"><h3>Kurkure</h3><p>₹10</p><button class="add-btn">ADD +</button></div></div>
+
+<!-- 🍦 Ice Cream Menu Items (NEW) -->
+<div class="menu-item"><img src="sipup.jpeg" alt="Sip Up"><div class="info"><h3>Sip Up</h3><p>₹10</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="pine stick.jpeg" alt="Pineapple Stick"><div class="info"><h3>Pineapple Stick</h3><p>₹10</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="berry.jpeg" alt="Berry Lime Ice"><div class="info"><h3>Berry Lime Ice</h3><p>₹15</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="pista stick.jpeg" alt="Pista Stick"><div class="info"><h3>Pista Stick</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="chocobar.jpeg" alt="Chocobar Stick"><div class="info"><h3>Chocobar Stick</h3><p>₹30</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="cone.jpeg" alt="Cone"><div class="info"><h3>Cone</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="cone.jpeg" alt="Cone"><div class="info"><h3>Cone</h3><p>₹40</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="cone.jpeg" alt="Cone"><div class="info"><h3>Cone</h3><p>₹50</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="cup.jpeg" alt="Vennila Cup"><div class="info"><h3>Vennila Cup</h3><p>₹10</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="ball.jpg" alt="Ball Ice"><div class="info"><h3>Ball Ice</h3><p>₹20</p><button class="add-btn">ADD +</button></div></div>
+<div class="menu-item"><img src="Mango-Popsicles-1.2.jpg" alt="Mango Stick"><div class="info"><h3>Mango Stick</h3><p>₹30</p><button class="add-btn">ADD +</button></div></div>
+
+
+
+
+  </main>
+
+
+  <!-- 🔧 JavaScript for Filter & Sort -->
+  <script>
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const filter = this.value.toLowerCase();
+      const items = document.querySelectorAll(".menu-item");
+
+      items.forEach((item) => {
+        const text = item.querySelector("h3").textContent.toLowerCase();
+        item.style.display = text.includes(filter) ? "flex" : "none";
+      });
+    });
+
+    function sortByPrice() {
+      const menu = document.querySelector(".menu");
+      const items = Array.from(document.querySelectorAll(".menu-item"));
+
+      items.sort((a, b) => {
+        const priceA = parseFloat(a.querySelector("p").textContent.replace("₹", ""));
+        const priceB = parseFloat(b.querySelector("p").textContent.replace("₹", ""));
+        return priceA - priceB;
+      });
+
+      menu.innerHTML = "";
+      items.forEach(item => menu.appendChild(item));
+    }
+    document.querySelectorAll(".add-btn").forEach((button, index) => {
+      button.addEventListener("click", function () {
+        const menuItem = this.closest(".menu-item");
+        const name = menuItem.querySelector("h3").textContent;
+        const price = parseFloat(menuItem.querySelector("p").textContent.replace("₹", ""));
+        const img = menuItem.querySelector("img").src;
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existingItem = cart.find(item => item.name === name);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ name, price, img, quantity: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`✅ ${name} added to cart!`);
+      });
+    });
+
+    function goToCart() {
+      window.location.href = "cart.html"; // redirect to your cart page
+    }
+  </script>
+
+</body>
+</html>
+
+
+  
+

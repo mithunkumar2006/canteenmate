@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Feedback</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .star {
+      font-size: 2rem;
+      color: gray;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .star.selected {
+      color: gold;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-r from-green-100 to-blue-100 flex items-center justify-center">
+
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+    <h1 class="text-3xl font-bold text-center mb-6">Give Your Feedback</h1>
+
+    <div class="mb-4">
+      <label class="block mb-2 text-lg font-semibold">Food Name</label>
+      <input id="food-name" type="text" placeholder="Enter food name" class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400">
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2 text-lg font-semibold">Rating</label>
+      <div id="stars" class="flex space-x-2">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <label class="block mb-2 text-lg font-semibold">Suggestions</label>
+      <textarea id="suggestion" rows="4" placeholder="Share your thoughts..." class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+    </div>
+
+    <button onclick="sendFeedback()" class="w-full bg-gradient-to-r from-blue-500 to-green-400 text-white py-3 rounded-xl text-lg font-semibold hover:shadow-lg transition">Send Feedback</button>
+  </div>
+
+  <script>
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = star.getAttribute('data-value');
+        updateStars(selectedRating);
+      });
+    });
+
+    function updateStars(rating) {
+      stars.forEach(star => {
+        if (star.getAttribute('data-value') <= rating) {
+          star.classList.add('selected');
+        } else {
+          star.classList.remove('selected');
+        }
+      });
+    }
+
+    function sendFeedback() {
+      const foodName = document.getElementById('food-name').value;
+      const suggestion = document.getElementById('suggestion').value;
+
+      if (!foodName || selectedRating == 0 || !suggestion) {
+        alert('Please fill in all fields!');
+        return;
+      }
+
+      const feedback = {
+        foodName,
+        rating: selectedRating,
+        suggestion
+      };
+
+      console.log('Feedback submitted:', feedback);
+
+      // Show custom popup
+      const popup = document.createElement('div');
+      popup.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-2xl shadow-2xl text-center z-50';
+      popup.innerHTML = `
+        <h2 class="text-2xl font-bold mb-4">Thank You!</h2>
+        <p class="text-lg">Your feedback has been submitted successfully.</p>
+        <button class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-xl hover:bg-blue-600" onclick="closePopup(this)">Close</button>
+      `;
+      document.body.appendChild(popup);
+
+      // Reset form
+      document.getElementById('food-name').value = '';
+      document.getElementById('suggestion').value = '';
+      selectedRating = 0;
+      updateStars(0);
+    }
+
+    function closePopup(button) {
+      button.parentElement.remove();
+    }
+  </script>
+
+</body>
+</html>

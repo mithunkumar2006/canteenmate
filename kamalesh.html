@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Canteen Mate</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .logo img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      animation: bounce 2s infinite;
+    }
+
+    #head {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      text-align: right;
+    }
+
+    nav a {
+      margin: 0 8px;
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #1abc9c;
+    }
+
+    /* Main */
+    main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .section {
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 450px;
+      animation: fadeIn 1s ease;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    td {
+      padding: 12px 8px;
+      font-weight: 600;
+      color: #34495e;
+    }
+
+    input, select {
+      padding: 10px 12px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 5px;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    input:focus, select:focus {
+      border-color: #1abc9c;
+      outline: none;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #1abc9c;
+      color: white;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #16a085;
+      transform: scale(1.05);
+    }
+
+    .error {
+      color: #e74c3c;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+      text-align: left;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav {
+        margin-top: 10px;
+      }
+      #head {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="canteenlogo.jpeg" alt="Logo" />
+    </div>
+    <h1 id="head">Canteen Mate</h1>
+    <nav>
+      <a href="#profile">Profile</a>
+      <a href="#orders">Orders</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <main>
+    <section class="section" id="login">
+      <form id="loginForm">
+        <table>
+          <tr>
+            <td>NAME:</td>
+            <td><input type="text" placeholder="Enter Name" required /></td>
+          </tr>
+          <tr>
+            <td>DEPARTMENT:</td>
+            <td>
+              <select required>
+                <option value="" disabled selected>Select Department</option>
+                <option>AI&DS</option>
+                <option>AI&ML</option>
+                <option>CSE</option>
+                <option>ECE</option>
+                <option>CSBS</option>
+                <option>MECH</option>
+                <option>CCE</option>
+                <option>VLSI</option>
+                <option>BIOTECH</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>SECTION:</td>
+            <td>
+              <select required>
+                <option value="" disabled selected>Select Section</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+                <option>E</option>
+                <option>F</option>
+                <option>G</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>REGISTER NUMBER:</td>
+            <td>
+              <input type="text" id="regNumber" placeholder="Enter Register Number" required />
+              <div class="error" id="regError">Register number must be numeric</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>
+              <input type="email" id="email" placeholder="Enter email" required />
+              <div class="error" id="emailError">Email must end with .ritchennai.edu.in</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td><input type="password" placeholder="Enter password" required /></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align:center;">
+              <button type="submit">Login</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const emailError = document.getElementById("emailError");
+      const regNumber = document.getElementById("regNumber").value.trim();
+      const regError = document.getElementById("regError");
+
+      let valid = true;
+
+      // Validate email domain
+      if (!email.endsWith(".ritchennai.edu.in")) {
+        emailError.style.display = "block";
+        valid = false;
+      } else {
+        emailError.style.display = "none";
+      }
+
+      // Validate register number is numeric
+      if (!/^\d+$/.test(regNumber)) {
+        regError.style.display = "block";
+        valid = false;
+      } else {
+        regError.style.display = "none";
+      }
+
+      if (valid) {
+        // Show popup
+        alert("Login Successful!");
+
+        // Redirect after short delay
+        setTimeout(function() {
+          window.location.href = "menu.html";
+        }, 500); // 0.5 second delay
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact RIT Canteen</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      position: relative;
+      text-align: center;
+    }
+
+    .contact-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .info {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .info p {
+      margin: 8px 0;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      resize: vertical;
+      min-height: 100px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group textarea:focus {
+      border-color: #fcb69f;
+    }
+
+    .send-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #fcb69f;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .send-btn:hover {
+      background-color: #fc9272;
+    }
+
+    .thank-you-message {
+      margin-top: 20px;
+      color: #28a745;
+      font-weight: 700;
+      font-size: 20px;
+      display: none;
+      animation: fadeIn 1s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contact-container">
+    <h2>Contact Admin</h2>
+
+    <div class="info">
+      <p><strong>Admin Name:</strong> RIT Canteen</p>
+      <p><strong>Phone:</strong> 9876543210</p>
+      <p><strong>Email:</strong> canteenmateRITagmail.com</p>
+    </div>
+
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="complaint">Your Complaint</label>
+        <textarea id="complaint" placeholder="Write your complaint here..." required></textarea>
+      </div>
+
+      <button type="submit" class="send-btn">Send</button>
+    </form>
+
+    <div id="thankYou" class="thank-you-message">
+      Thank you for reaching us!
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const thankYouMessage = document.getElementById('thankYou');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the actual form submission
+
+      form.style.display = 'none'; // Hide the form
+      thankYouMessage.style.display = 'block'; // Show thank you message
+    });
+  </script>
+
+</body>
+</html>
+
+
+      
+
